@@ -1,136 +1,221 @@
-**Customer Behavior Analysis Dashboard**
+# 📊 Customer Behavior Analysis Dashboard
 
-An end-to-end data analytics project that cleans, stores, queries, and visualizes customer purchasing data — combining Python, MySQL, and Power BI into a single interactive dashboard for stakeholder decision-making.
+> An end-to-end data analytics project that transforms raw customer shopping data into actionable business insights using **Python, MySQL, and Power BI**.
 
-Show Image
+---
 
+## 📖 Project Overview
 
-Project Overview
+This project analyzes customer purchasing behavior by integrating **Python** for data cleaning, **MySQL** for data storage and business analysis, and **Power BI** for interactive dashboard visualization.
 
-This project analyzes ~3,900 customer transaction records to uncover patterns in demographics, spending behavior, subscription status, and product performance. The goal is to turn raw shopping data into clear, actionable insight for business stakeholders.
+The objective is to help stakeholders understand customer demographics, spending patterns, subscription behavior, and product performance through data-driven insights.
 
-Workflow: Raw CSV → Python (clean & validate) → MySQL (structured storage & querying) → Power BI (interactive dashboard)
+---
 
+## 🔄 Project Workflow
 
-Tools & Tech Stack
+```text
+Raw CSV Dataset
+       │
+       ▼
+Python (Pandas)
+Data Cleaning & Validation
+       │
+       ▼
+MySQL
+Data Storage & Business Analysis
+       │
+       ▼
+Power BI
+Interactive Dashboard & Business Insights
+```
 
-ToolPurposePython (Pandas, Jupyter)Data loading, cleaning, missing-value imputationSQLAlchemyConnecting Python to MySQLMySQL / MySQL WorkbenchStructured storage and business queryingPower BIInteractive dashboard and visualization
+---
 
+## 🛠️ Tech Stack
 
-Dataset
+| Tool                     | Purpose                       |
+| ------------------------ | ----------------------------- |
+| Python (Pandas, Jupyter) | Data Cleaning & Preprocessing |
+| SQLAlchemy               | Database Connectivity         |
+| MySQL                    | Data Storage & SQL Analysis   |
+| Power BI                 | Dashboard & Visualization     |
 
-The dataset contains customer transaction and behavioral attributes:
+---
 
-Customer ID, Age, Gender, Item Purchased, Category, Purchase Amount, Location, Size, Color, Season, Review Rating, Subscription Status, Shipping Type, Discount Applied, Promo Code Used, Previous Purchases, Payment Method, Frequency of Purchases
+## 📂 Repository Structure
 
-
-Rows: 3,900
-Columns: 18
-Missing values found: 37 (in Review Rating) — imputed using category-wise median
-
-
-
-Project Workflow
-
-1. Data Cleaning (Python - pandas)
-
-
-Loaded the raw CSV with Pandas and inspected structure (df.info(), df.head())
-Identified 37 missing values in Review Rating
-Imputed missing values using the category-wise median to preserve distribution
-Validated data types and removed duplicates
-
-
-2. Database Integration (SQLAlchemy → MySQL)
-
-
-Connected to MySQL using SQLAlchemy
-Loaded the cleaned DataFrame into a customer table inside the customer_behavior database
-Verified the load with a direct SQL read-back
-
-
-3. Business Analysis (SQL)
-
-Key queries written in MySQL Workbench:
-
-
-Revenue by Gender — total revenue grouped by customer gender
-Subscription Status vs. Spend — customer count, average spend, and total revenue by subscription status
-Top-Selling Items by Category — used ROW_NUMBER() OVER (PARTITION BY ...) to rank items within each category by order volume
-
-
-4. Dashboard (Power BI)
-
-An interactive dashboard built on the cleaned dataset, featuring:
-
-
-KPIs: Total Customers (3.9K), Average Purchase Amount ($59.76), Average Review Rating (3.75)
-Charts: Revenue by Category, Revenue by Age Group, Review Rating by Category, % of Customers by Subscription Status
-Filters: Age Category, Subscription Status, Category, Shipping Type
-
-
-
-Key Insights
-
-
-The customer base totals approximately 3,900 customers
-Average spend per customer is just under $60
-A small set of product categories drive a disproportionate share of revenue
-Subscription status correlates with measurable differences in spending behavior
-Seasonal trends meaningfully affect purchase volume and timing
-Age demographics reveal distinct spending segments
-
-
-
-Repository Structure
-
+```text
 customer-behavior-analysis/
-├── report/
-│   └── Customer_Behavior_Analysis_Report.docx
-│── data/
+│
+├── data/
 │   └── customer_shopping_data.csv
-├── LICENSE
-├── README.md
+│
 ├── notebooks/
 │   └── customer_behavior_analysis.ipynb
+│
+├── sql/
+│   └── customer_behavior_kpi_analysis.sql
+│
 ├── dashboard/
 │   └── customer_behavior_dashboard.pbix
-├── sql/
-    └── customer_behavior_kpi_analysis.sql
+│
+├── report/
+│   └── Customer_Behavior_Analysis_Report.pdf
+│
+├── README.md
+└── LICENSE
+```
 
+---
 
-How to Run This Project
+## 📊 Dataset Summary
 
+| Feature                |                           Value |
+| ---------------------- | ------------------------------: |
+| Total Records          |                           3,900 |
+| Total Columns          |                              18 |
+| Missing Values         |                              37 |
+| Missing Value Strategy | Category-wise Median Imputation |
 
-Clone the repo
+### Dataset Includes
 
+* Customer Demographics
+* Product Categories
+* Purchase Amount
+* Subscription Status
+* Review Ratings
+* Seasonal Purchases
+* Payment Methods
+* Shipping Types
+* Purchase Frequency
 
-bash   git clone https://github.com/<your-username>/customer-behavior-analysis.git
-   cd customer-behavior-analysis
+---
 
+## 🔍 Project Workflow
 
-Set up Python environment
+### 1. Data Cleaning (Python)
 
+* Loaded and explored the dataset using Pandas.
+* Identified missing values.
+* Imputed missing review ratings using category-wise median.
+* Removed duplicates and validated data types.
 
-bash   pip install pandas sqlalchemy pymysql
+### 2. Database Integration (MySQL)
 
+* Connected Python to MySQL using SQLAlchemy.
+* Loaded the cleaned dataset into a MySQL database.
+* Verified successful data import.
 
-Run the cleaning notebook
-Open notebooks/data_cleaning.ipynb in Jupyter and run all cells to clean the raw CSV and load it into MySQL.
-Run the SQL queries
-Open sql/analysis_queries.sql in MySQL Workbench (update your connection credentials first).
-Open the dashboard
-Open dashboard/customer_behavior_dashboard.pbix in Power BI Desktop to explore the visuals interactively.
+### 3. Business Analysis (SQL)
 
+Performed SQL analysis including:
 
+* Revenue by Gender
+* Customer Spending Analysis
+* Subscription Behavior
+* Product Performance
+* Category-wise Revenue
+* Top Selling Products
+* Customer Purchase Trends
+* Window Function Analysis
 
-Full Report
+### 4. Dashboard Development (Power BI)
 
-A detailed write-up of the methodology, screenshots, and business recommendations is available in report/Customer_Behavior_Analysis_Report.pdf
+Developed an interactive dashboard featuring:
 
+* KPI Cards
+* Revenue Analysis
+* Customer Demographics
+* Category Performance
+* Review Rating Analysis
+* Interactive Filters & Slicers
 
-Author
+---
 
-Satheesh E
-Data Analyst
-🔗 LinkedIn · www.linkedin.com/in/satheesh-theodd1
+## 📈 Dashboard KPIs
+
+* 👥 Total Customers
+* 💰 Average Purchase Amount
+* ⭐ Average Review Rating
+* 📦 Revenue by Category
+* 👤 Revenue by Age Group
+* 🔄 Subscription Status Analysis
+
+---
+
+## 💡 Key Business Insights
+
+* The dataset contains approximately **3,900 customer transactions**.
+* Average customer spending is approximately **$59.76** per purchase.
+* A small number of product categories contribute the majority of revenue.
+* Subscription customers show different purchasing behavior compared to non-subscribers.
+* Seasonal purchasing patterns significantly influence sales.
+* Customer age groups exhibit distinct spending habits.
+
+---
+
+## 🚀 How to Run
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/<your-username>/customer-behavior-analysis.git
+cd customer-behavior-analysis
+```
+
+### Install Dependencies
+
+```bash
+pip install pandas sqlalchemy pymysql
+```
+
+### Run the Project
+
+1. Open the Jupyter Notebook and execute all cells.
+2. Load the cleaned dataset into MySQL.
+3. Execute the SQL analysis scripts.
+4. Open the Power BI dashboard (`.pbix`) to explore the interactive visualizations.
+
+---
+
+## 🎯 Skills Demonstrated
+
+* Data Cleaning
+* Data Validation
+* Data Transformation
+* SQL Querying
+* Database Design
+* Window Functions
+* Business KPI Analysis
+* Data Visualization
+* Dashboard Development
+* Business Intelligence
+
+---
+
+## 📌 Future Enhancements
+
+* Predict Customer Churn
+* Customer Lifetime Value (CLV) Modeling
+* Sales Forecasting
+* Automated ETL Pipeline
+* Real-Time Dashboard Refresh
+
+---
+
+## 👨‍💻 Author
+
+**Satheesh**
+
+Aspiring Data Analyst
+
+**Skills:** Python • MySQL • Power BI • Excel
+
+🔗 **LinkedIn:** https://www.linkedin.com/in/satheesh-theodd1
+
+---
+
+## ⭐ Support
+
+If you found this project useful, please consider giving it a **⭐ Star** on GitHub.
